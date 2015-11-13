@@ -1,4 +1,4 @@
-var util = require('./util');
+var util = require('./../_util/util');
 var namegen = require('./namegen');
 var fs = require('fs');
 

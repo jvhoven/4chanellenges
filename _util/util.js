@@ -1,5 +1,3 @@
-var fs = require('fs');
-
 var util = module.exports = {
     rng: function(max, min) {
         return Math.floor(Math.random() * (max - min) + min);
