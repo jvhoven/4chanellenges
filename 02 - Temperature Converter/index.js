@@ -39,10 +39,11 @@ async.series({
             console.log(kelvin.toCelcius(results.first), "celcius");
             break;
         case "6":
-            console.log(kelvin.toFahrenheit(results.first), "celcius");
+            console.log(kelvin.toFahrenheit(results.first), "fahrenheit");
             break;
         default:
             console.log("Couldn't compute");
             break;
     }
+    rl.close();
 });
