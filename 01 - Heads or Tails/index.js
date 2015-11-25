@@ -10,7 +10,7 @@ var rl = readline.createInterface({
 
 console.log("Pulled card is:"+ pull());
 rl.question("Guess higher or lower: ", function(answer){
-
+    //confirm TODO
     rl.close();
 });
 
@@ -31,12 +31,8 @@ function confirm(answer) {
         } else {
             // error: does not exists
             console.log("Only enter \"higer\" or \"lower\"");
+            return false;
         }
-        if(val.toLowerCase() == possibilities[i].toLowerCase()) {
-            return true;
-        }
-    }
-    return false;
 }
 
 /*
