@@ -9,6 +9,7 @@ var rl = readline.createInterface({
 });
 
 console.log("Pulled card is:"+ pull());
+
 var doQuestion = function(){
     rl.question("Guess higher or lower: ", function(answer){
         if (confirm(answer)) {
@@ -42,6 +43,7 @@ function confirm(answer) {
 
     return false;
 };
+
 
 /*
 function exists(val){
