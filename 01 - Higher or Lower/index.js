@@ -1,11 +1,11 @@
 var readline = require('readline');
 var util = require('./../_util/util');
 
-var randomGenerated = util.rng(12,0);
-var possibilities = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
-
-var firstCard = pull();
-var secondCard = pull();
+var randomGenerated   = util.rng(12,0);
+var AllPossibilities  = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+var restPossibilities = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+var firstCard         = pull();
+var secondCard        = pull();
 
 var rl = readline.createInterface({
     input: process.stdin,
@@ -15,7 +15,7 @@ var rl = readline.createInterface({
 console.log("Pulled card is:"+ firstCard);
 
 var doQuestion = function(){
-    rl.question("Guess higher or lower: ", function(answer){
+    rl.question("Guess \"higher\" or \"lower\": ", function(answer){
         if (confirm(answer.toLowerCase())) {
             return rl.close();
         }
@@ -25,56 +25,42 @@ var doQuestion = function(){
 doQuestion();
 
 function pull() {
-    var pick = util.rng(12,0);
-    var card = possibilities[pick];
-    possibilities.splice(pick, 1);
+    var pick = util.rng(restPossibilities.length,0);
+    var card = restPossibilities[pick];
+    restPossibilities.splice(pick, 1);
     return card;
 }
 
 function confirm(answer) {
-        var IOFirst = possibilities.indexOf(firstCard.valueOf());  //TODO !!!!!!!!!
-        var IOSecond = possibilities.indexOf(secondCard.valueOf()); // TODO!!!!!!!!!!!!
+        var IOFirst = AllPossibilities.indexOf(firstCard);
+        var IOSecond = AllPossibilities.indexOf(secondCard);
         console.log(answer);
         if (answer == "higher" || answer == "lower"){
-            console.log("IOFirst= "+firstCard+" "+IOFirst);
-            console.log("IOSecond= "+secondCard+" "+IOSecond);
+            console.log("**********");
+            if(answer == "higher" && IOFirst < IOSecond){
+                //higher right
+                console.log("You were RIGHT, The second card was \"higher\" than the first card!");
+            } else if(answer == "lower" && IOFirst > IOSecond) {
+                //lower right
+                console.log("You were RIGHT, The second card was \"lower\" than the first card!");
+            } else if(answer == "higher" && IOFirst > IOSecond){
+                //higher incorrect
+                console.log("You were INCORRECT, you guessed \"higher\" but the second card was \"lower\"");
+
+            } else if(answer == "lower" && IOFirst < IOSecond) {
+                //lower incorrect
+                console.log("You were INCORRECT, you guessed \"lower\" but the second card was \"higher\"");
+
+            }
+            console.log( "\n"+
+                "First card was: "+firstCard+"\n"+
+                "Second card was:"+secondCard+"\n"+
+                "**********"
+            );
             return true;
         } else {
             // error only enter higher or lower
-        }
-        return false;
-
-
-
-
-
-
-
-
-
-
-
-        /*
-        if (answer.toLowerCase() == "lower" && IOFirst > IOSecond){
-            // lower was entered
-            console.log(
-                "**********" +"\n"+
-                "You were right, The second card was LOWER than the first card!" +"\n"+
-                "The pulled cards are: "+firstCard+" "+secondCard+"\n"+
-                "**********");
-            return true;
-        } else if (answer.toLowerCase() == "higher" && IOFirst < IOSecond) {
-            // higher was entered
-            console.log(
-                "**********" +"\n"+
-                "You were right, The second card was HIGHER than the first card!" +"\n"+
-                "The pulled cards are: "+firstCard+" "+secondCard+"\n"+
-                "**********");
-            return true;
-        } else {
-            // error!
             console.log("Only enter \"higher\" or \"lower\"");
         }
-
-    return false;*/
+        return false;
 }
