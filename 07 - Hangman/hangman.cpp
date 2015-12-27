@@ -15,13 +15,13 @@ std::string pickWord();
 int random(int min, int max);
 
 // Global
-const std::string WORDS[] = { "noodzaak", "waardering", "overeenkomst", "wandeling", "vis" };
+const std::string WORDS[] = { "openingstijden", "afhaalcentrum", "contactgegevens", "recensies", "ruim" };
 std::string chosenWord = pickWord();
 char *guessedWord = dissectWord();
 bool guessed = false;
 
 int main() {
-    unsigned int tries = sizeof(chosenWord);
+    unsigned int tries = 20;
     std::cout << "Welcome to hangman, you have " << tries << " tries. Good luck!" << std::endl;
     showGuessedWord();
 
