@@ -1,0 +1,8 @@
+[package]
+
+name = "24"
+version = "0.0.1"
+authors = ["jvhoven <jeffreyvanhoven@gmail.com>"]
+
+[dependencies.converter]
+path = "src/converter"

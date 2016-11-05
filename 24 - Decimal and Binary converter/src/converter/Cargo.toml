@@ -1,0 +1,8 @@
+[package]
+name = "converter"
+version = "0.0.1"
+authors = ["Somebody else"]
+ 
+[lib]
+name = "converter"
+path = "converter.rs"
