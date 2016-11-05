@@ -57,7 +57,7 @@ fn binary_to_decimal() {
   match input.as_ref() {
     "back\n" => main(),
     _ => {
-      converter::to_decimal(input.as_str());
+      let result = converter::to_decimal(input.as_str());
     }
   };
 }
@@ -73,7 +73,8 @@ fn decimal_to_binary() {
   match input.as_ref() {
     "back\n" => main(),
     _ => {
-      converter::to_binary(input.as_str());
+      let result = converter::to_binary(to_integer(input));
+      println!("It is {} in binary!", result);
     }
   };
 }
