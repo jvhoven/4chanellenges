@@ -1,0 +1,10 @@
+[package]
+
+name = "35"
+version = "0.0.1"
+authors = ["jvhoven <jeffreyvanhoven@gmail.com>"]
+
+[dependencies]
+hyper = "0.9.11"
+serde = "0.8.17"
+serde_json = "0.8.3"
