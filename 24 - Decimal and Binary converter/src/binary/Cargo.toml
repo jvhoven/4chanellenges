@@ -1,8 +1,8 @@
 [package]
-name = "converter"
+name = "binary"
 version = "0.0.1"
 authors = ["Somebody else"]
  
 [lib]
-name = "converter"
-path = "converter.rs"
+name = "binary"
+path = "binary.rs"

@@ -1,4 +1,6 @@
-extern crate converter;
+extern crate binary;
+
+use binary::Converter;
 use std::io;
 
 fn main() {
@@ -11,12 +13,18 @@ fn main() {
     let choice: String = read();
 
     // Spooky `shadowing` of our initial variable choice.
-    // See @to_integer.
+     // See @to_integer.
     let choice: u32 = to_integer(choice);
 
     match choice {
-      1 => decimal_to_binary(),
-      2 => binary_to_decimal(),
+      1 => { 
+        decimal_to_binary();
+        break;
+      },
+      2 => {
+        binary_to_decimal();
+        break;
+      },
       _ => println!("Invalid choice, please pick either 1 or 2."),
     }
   }
@@ -50,31 +58,34 @@ fn binary_to_decimal() {
   println!("\nInsert binary for me to convert!");
   println!(" `back` to go back to main menu.");
 
-  let input : String = read();
+  let input: String = read();
 
   // Match back to return to the main menu,
   // otherwise convert binary to decimal.
   match input.as_ref() {
     "back\n" => main(),
     _ => {
-      let result = converter::to_decimal(input.as_str());
+      // Its actually from_decimal but the input we get 
+      // is a string :), this is however convenient if you look
+      // at the implementation of Binary::from_string.
+      let conversion: Converter = Converter::to_decimal(input.as_str());
+      println!("{} to decimal is {}!", conversion.binary, conversion.decimal);
     }
   };
 }
 
 fn decimal_to_binary() {
-  println!("\nInsert decimal for me to evaluate!");
+  println!("\nInsert decimal for me to convert!");
   println!(" `back` to go back to main menu.");
 
-  let input : String = read();
+  let input: String = read();
   
   // Match back to return to the main menu,
   // otherwise convert decimal to binary.
   match input.as_ref() {
     "back\n" => main(),
     _ => {
-      let result = converter::to_binary(to_integer(input));
-      println!("It is {} in binary!", result);
+      Converter::to_binary(to_integer(input));
     }
   };
 }
