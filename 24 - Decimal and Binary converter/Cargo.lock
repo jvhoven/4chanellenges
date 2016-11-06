@@ -1,0 +1,11 @@
+[root]
+name = "24"
+version = "0.0.1"
+dependencies = [
+ "binary 0.0.1",
+]
+
+[[package]]
+name = "binary"
+version = "0.0.1"
+
