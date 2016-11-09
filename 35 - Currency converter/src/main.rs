@@ -7,6 +7,8 @@ use serde::Deserialize;
 use json::Value;
 use std::io::Read;
 
+mod logger;
+
 struct Currency {
   // Identifier of the currency
   id: String,
@@ -21,14 +23,13 @@ pub struct Exchange {
   base: Currency
 }
 
-
 /**
 * TODO: Implement
 */
 impl serde::Deserialize for Currency {
-   fn deserialize<D>(d: &mut D) -> Result<Self, D::Error> where D: serde::Deserializer {
+  fn deserialize<D>(d: &mut D) -> Result<Self, D::Error> where D: serde::Deserializer {
     Ok(Currency { id: String::new(), value: 1.0 })
-   }
+  }
 }
 
 impl Exchange {
